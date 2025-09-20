@@ -66,3 +66,43 @@ int main()
 }
 
 //task 4
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int main()
+{
+	// initializing variables
+	int AB;
+	int BC;
+	int weight;
+	int loss;
+	int limit{ 300 };
+	// asking for data
+	cout << "Hello! I will help you out with calculating whether you can make out the flight." << endl;
+	cout << "First, what is the distance between point A and B (in km)? >>> ";
+	cin >> AB;
+	cout << "Second, what is the distance between point B and point C (in km)? >>> ";
+	cin >> BC;
+	cout << "And how much does the baggage weight (kg, max 2000) ? >>> ";
+	cin >> weight;
+	// weightcheck
+	if (weight > 2000) {
+		cout << "The plane can't carry that much weight. The flight is impossible." << endl;
+		exit(EXIT_SUCCESS);
+	}
+	// calculating loss
+	if (weight < 500) {
+		loss = 1;
+	}
+	else if (500 < weight < 1000) {
+		loss = 4;
+	}
+	else if (1000 < weight < 1500) {
+		loss = 7;
+	}
+	else if (weight > 1500) {
+		loss = 9;
+	}
+	
+}
