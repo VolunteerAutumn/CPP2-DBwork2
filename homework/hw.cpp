@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmath>
+#include <algorithm>
 using namespace std;
 
 //PART I
@@ -130,3 +132,82 @@ int main()
 
 // PART II
 // task 1
+int main()
+{
+    // date 1
+    int Y1, M1, D1;
+    cout << "Enter date 1 in format of (yyyy mm dd) >>> ";
+    cin >> Y1 >> M1 >> D1;
+
+    // date 2
+    int Y2, M2, D2;
+    cout << "Enter date 2 in format of (yyyy mm dd) >>> ";
+    cin >> Y2 >> M2 >> D2;
+
+    // Calculating Julian Days using formula because I'm makaka fcking genius
+    long JD1 = 367 * Y1 - floor(7 * (Y1 + floor((M1 + 9) / 12.0)) / 4) + floor(275 * M1 / 9.0) + D1 + 1721013;
+    long JD2 = 367 * Y2 - floor(7 * (Y2 + floor((M2 + 9) / 12.0)) / 4) + floor(275 * M2 / 9.0) + D2 + 1721013;
+
+    int days = JD2 - JD1;
+
+    cout << "There are " << days << " full days between " << Y1 << "." << M1 << "." << D1 << " and " << Y2 << "." << M2 << "." << D2 << endl;
+}
+
+// tasque 2
+int main() {
+    double setsalary = 200.0;
+    double sells1, sells2, sells3;
+    cout << "Enter an amount of sells for three managers separately in USD >>> ";
+    cin >> sells1 >> sells2 >> sells3;
+
+    double p1, p2, p3;
+
+    // calculatin for maganer 1
+    if (sells1 < 500) {
+        p1 = setsalary + sells1 * 0.03;
+    }
+    else if (sells1 < 1000) {
+        p1 = setsalary + sells1 * 0.05;
+    }
+    else {
+        p1 = setsalary + sells1 * 0.08;
+    }
+
+    // calculating for maganer 2
+    if (sells2 < 500) {
+        p2 = setsalary + sells2 * 0.03;
+    }
+    else if (sells2 < 1000) {
+        p2 = setsalary + sells2 * 0.05;
+    }
+    else {
+        p2 = setsalary + sells2 * 0.08;
+    }
+
+    // calculating for maganer 3
+    if (sells3 < 500) {
+        p3 = setsalary + sells3 * 0.03;
+    }
+    else if (sells3 < 1000) {
+        p3 = setsalary + sells3 * 0.05;
+    }
+    else {
+        p3 = setsalary + sells3 * 0.08;
+    }
+
+    // $ $ $ B O N U S $ $ $
+    double max_salary = max({ p1, p2, p3 });
+    if (p1 == max_salary) {
+        p1 += 200;
+    }
+    else if (p2 == max_salary) {
+        p2 += 200;
+    }
+    else if (p3 == max_salary) {
+        p3 += 200;
+    }
+
+    cout << "The manager 1 receives $" << p1 << ";\n";
+    cout << "The manager 2 receives $" << p2 << ";\n";
+    cout << "The manager 3 receives $" << p3 << ";\n";
+}
