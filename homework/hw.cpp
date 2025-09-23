@@ -95,14 +95,38 @@ int main()
 	if (weight < 500) {
 		loss = 1;
 	}
-	else if (500 < weight < 1000) {
+	else if (weight >= 500 && weight < 1000) {
 		loss = 4;
 	}
-	else if (1000 < weight < 1500) {
+	else if (weight >= 1000 && weight < 1500) {
 		loss = 7;
 	}
-	else if (weight > 1500) {
+	else if (weight >= 1500) {
 		loss = 9;
 	}
-	
+	// calculating loss from A to B
+	int loss_from_A_B = loss * AB;
+	int refuel;
+	if (loss_from_A_B > limit) {
+		cout << "The flight is impossible; You will not reach point B because you will lose " << loss_from_A_B << " liters of fuel." << endl;
+		return 0;
+	}
+	// message about the refuel
+	cout << "You'll need to add " << loss_from_A_B << " liters of fuel on the point B." << endl;
+	// calculating loss from B to C
+	int loss_from_B_C = loss * BC;
+	if (loss_from_B_C > limit) {
+		cout << "The flight is impossible; You will not reach point C because you will lose " << loss_from_B_C << " liters of fuel." << endl;
+		return 0;
+	}
+	else {
+		// final msg
+		cout << "The flight is possible!" << endl;
+		cout << "\t1. Fuel the plane to the max and fly to the limit (" << limit << "); The flight from point A to point B will take " << loss_from_A_B << " l of fuel." << endl;
+		cout << "\t2. When you reach point B, add " << loss_from_A_B << " liters to the fuel tank." << endl;
+		cout << "\t3. Then fly from point B to C, it'll waste " << loss_from_B_C << " l of fuel.";
+	}
 }
+
+// PART II
+// task 1
